@@ -26,6 +26,7 @@ func SetRedis() {
 		pong, err := redisClusterClient.Ping().Result()
 		if err != nil {
 			fmt.Printf("------------连接 redis cluster：%s 失败,原因：%v\n", conf.RedisHost+":"+conf.RedisPort, err)
+			return
 		}
 		RedisOpen = true
 		fmt.Printf("---------连接 redis cluster 成功, %v\n", pong)
@@ -37,6 +38,7 @@ func SetRedis() {
 		pong, err := redisClient.Ping().Result()
 		if err != nil {
 			fmt.Printf("------------连接 redis：%s 失败,原因：%v\n", conf.RedisHost+":"+conf.RedisPort, err)
+			return
 		}
 		RedisOpen = true
 		fmt.Printf("---------连接 redis  成功, %v\n", pong)
